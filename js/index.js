@@ -24,14 +24,22 @@ fetch("addons/navbar.html")
     .then((html) => {
       loader.innerHTML = html;
 
-      // Fade out after few seconds
-      setTimeout(function () {
-        loader.classList.add("fade-out");
-        loader.addEventListener("transitionend", function () {
-          loader.remove();
-        });
-        sessionStorage.setItem("introShown", "true");
-      }, 3000);
+      // Wait for page to fully load, then fade out after 2 seconds
+      function fadeOutAfterDelay() {
+        setTimeout(function () {
+          loader.classList.add("fade-out");
+          loader.addEventListener("transitionend", function () {
+            loader.remove();
+          });
+          sessionStorage.setItem("introShown", "true");
+        }, 2000);
+      }
+
+      if (document.readyState === "complete") {
+        fadeOutAfterDelay();
+      } else {
+        window.addEventListener("load", fadeOutAfterDelay);
+      }
     })
     .catch((err) => console.error("Failed to load loading screen:", err));
 })();
