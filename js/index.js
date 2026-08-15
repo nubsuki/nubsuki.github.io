@@ -11,7 +11,7 @@ fetch("addons/navbar.html")
   const loader = document.getElementById("loading-screen");
 
   function startHeroAnimation() {
-    const text = "Hi, I'm Nubsuki (aka SK)";
+    const text = "Hi, I'm Nubsuki (aka sk)";
     const textElement = document.getElementById("typewriter-text");
     const subtextElement = document.getElementById("hero-subtext");
     const gifElement = document.getElementById("miyabi-gif");
