@@ -8,3 +8,49 @@ body {
     overflow: hidden;
     background: #000000dc;
 }
+
+#Heding {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100vh;
+    padding: 150px 15% 0 15%; /* 100px accounts for the navbar height (roughly 76px) + 20px gap */
+    color: white;
+    font-family: 'Fira Code', monospace;
+    text-align: left;
+}
+
+.hero-title {
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    min-height: 3rem;
+}
+
+#typewriter-text {
+    border-right: 4px solid #ff7b00; /* typewriter cursor */
+    padding-right: 5px;
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #ff7b00; }
+}
+
+#miyabi-gif {
+    height: 2.5rem; /* slightly larger than text */
+    margin-left: 10px;
+    opacity: 0; /* Wait for JS to show it */
+    transition: opacity 0.3s ease-in;
+}
+
+#hero-subtext {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+    font-size: 1rem;
+    color: #a0a0a0;
+    line-height: 1.6;
+}
