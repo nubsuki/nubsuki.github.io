@@ -4,6 +4,16 @@ fetch("addons/navbar.html")
   .then((html) => {
     document.getElementById("navbar-placeholder").innerHTML = html;
 
+    // Highlight active link
+    const path = window.location.pathname.toLowerCase();
+    if (path.includes("projects")) {
+      const navProjects = document.getElementById("nav-projects");
+      if (navProjects) navProjects.classList.add("active");
+    } else {
+      const navHome = document.getElementById("nav-home");
+      if (navHome) navHome.classList.add("active");
+    }
+
     // Attach email button handler here — scripts inside innerHTML never execute
     const emailBtn = document.getElementById("navbar-email-btn");
     if (emailBtn) {

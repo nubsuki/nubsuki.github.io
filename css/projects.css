@@ -1,0 +1,372 @@
+/* Main projects container layout */
+.projects-container {
+    max-width: 1000px;
+    margin: 120px auto 50px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Projects hero header box */
+.projects-header-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.projects-hero-sub {
+    font-size: 0.92rem;
+    color: #a0a0a0;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Filter toolbar */
+.projects-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.projects-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #bbb;
+    border-radius: 6px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn i {
+    color: #55c4d3;
+    font-size: 0.85rem;
+}
+
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    border-color: rgba(85, 196, 211, 0.4);
+    transform: translateY(-1px);
+}
+
+.filter-btn.active {
+    background: rgba(85, 196, 211, 0.12);
+    border-color: #55c4d3;
+    color: #55c4d3;
+    font-weight: 600;
+}
+
+.filter-count {
+    display: inline-block;
+    padding: 1px 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    font-size: 0.7rem;
+}
+
+.filter-btn.active .filter-count {
+    background: rgba(85, 196, 211, 0.25);
+    color: #fff;
+}
+
+/* Search input */
+.projects-search-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 220px;
+}
+
+.projects-search-wrap i.bi-search {
+    position: absolute;
+    left: 10px;
+    color: #777;
+    font-size: 0.82rem;
+    pointer-events: none;
+}
+
+.projects-search-input {
+    width: 100%;
+    padding: 7px 30px 7px 32px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    color: #fff;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.projects-search-input:focus {
+    border-color: #55c4d3;
+    box-shadow: 0 0 10px rgba(85, 196, 211, 0.2);
+}
+
+.projects-search-input::placeholder {
+    color: #666;
+}
+
+.projects-search-clear {
+    position: absolute;
+    right: 8px;
+    background: none;
+    border: none;
+    color: #777;
+    cursor: pointer;
+    padding: 0;
+    font-size: 0.85rem;
+    display: none;
+}
+
+.projects-search-clear:hover {
+    color: #fff;
+}
+
+/* Projects Grid (1 card per row) */
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+/* Project metadata list for G2G and detailed cards */
+.project-meta-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+.project-meta-item {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.meta-label {
+    color: #888;
+    font-weight: 500;
+}
+
+.meta-value {
+    color: #55c4d3;
+}
+
+/* Title link */
+.project-title-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+.project-title-link:hover {
+    color: #55c4d3;
+}
+
+/* Datasets inside card */
+.project-card-datasets {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.datasets-subheading {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #ccc;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.datasets-subheading i {
+    color: #55c4d3;
+}
+
+.project-card-datasets .datasets-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+@media (max-width: 650px) {
+    .project-card-datasets .datasets-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* In-Card Video Previews */
+.project-card-video {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.video-preview-header {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #ccc;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.video-preview-header i {
+    color: #ff4444;
+}
+
+.video-embed-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #000;
+}
+
+.video-poster {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.25s ease;
+}
+
+.video-poster::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    transition: background 0.2s ease;
+}
+
+.video-poster:hover::before {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.video-play-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #ff4444;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    padding-left: 3px;
+    box-shadow: 0 4px 18px rgba(255, 68, 68, 0.5);
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    z-index: 1;
+}
+
+.video-poster:hover .video-play-btn {
+    transform: scale(1.1);
+    background: #ff2222;
+    box-shadow: 0 6px 24px rgba(255, 68, 68, 0.7);
+}
+
+.video-embed-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* In-Card Screenshot / Image Previews */
+.project-card-media {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.project-media-header {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #ccc;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.project-media-header i {
+    color: #55c4d3;
+}
+
+.project-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.project-image-preview {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.25s ease;
+}
+
+.project-image-preview:hover {
+    transform: scale(1.01);
+}
+
+/* Empty search state */
+.projects-empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #777;
+    font-size: 0.9rem;
+    display: none;
+}
+
+.projects-empty-state i {
+    font-size: 2rem;
+    color: #444;
+    display: block;
+    margin-bottom: 8px;
+}

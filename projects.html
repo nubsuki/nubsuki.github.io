@@ -4,12 +4,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Projects by nubsuki: G2G gaming FPS performance prediction system, PteroPal, VTuber tools, and open-source software." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <link rel="stylesheet" href="css/index.css" />
   <link rel="stylesheet" href="css/loading.css" />
   <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/projects.css" />
   <link rel="stylesheet" href="css/terminal.css" />
   <link rel="icon" type="image/jpeg" href="assets/bochchi.jpg" />
   <title>nubsuki.exe</title>
@@ -19,10 +25,320 @@
   <!-- Loading Screen Overlay -->
   <section id="loading-screen"></section>
 
-  <!-- Main Content (hidden behind loader initially) -->
+  <!-- Main Navbar Container -->
   <section id="navbar-placeholder"></section>
 
+  <main class="projects-container">
+    <!-- Header Box -->
+    <section class="content-box projects-header-box">
+      <h2><i class="bi bi-code-slash"></i> PROJECTS</h2>
+      <p class="projects-hero-sub">
+        A collection of open source tools, machine learning experiments, and utilities I build.
+      </p>
+
+      <!-- Category Filter & Search Toolbar -->
+      <div class="projects-toolbar">
+        <div class="projects-filters">
+          <button class="filter-btn active" data-filter="all">
+            <i class="bi bi-grid-3x3-gap-fill"></i> ALL <span class="filter-count">9</span>
+          </button>
+          <button class="filter-btn" data-filter="ml">
+            <i class="bi bi-cpu-fill"></i> MACHINE LEARNING <span class="filter-count">1</span>
+          </button>
+          <button class="filter-btn" data-filter="tools">
+            <i class="bi bi-tools"></i> TOOLS &amp; BOTS <span class="filter-count">3</span>
+          </button>
+          <button class="filter-btn" data-filter="apps">
+            <i class="bi bi-window-desktop"></i> APPS &amp; AUDIO <span class="filter-count">5</span>
+          </button>
+        </div>
+
+        <div class="projects-search-wrap">
+          <i class="bi bi-search"></i>
+          <input type="text" id="projects-search" class="projects-search-input" placeholder="Search projects..." />
+          <button type="button" id="projects-search-clear" class="projects-search-clear" title="Clear search">
+            <i class="bi bi-x-circle-fill"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid" id="projects-grid">
+
+        <!-- 1. G2G (Machine Learning) -->
+        <div class="project-card" data-category="ml">
+          <div class="project-card-header">
+            <a href="https://github.com/nubsuki/g2g" target="_blank" class="project-card-title project-title-link">
+              <i class="bi bi-cpu-fill"></i>
+              <span>G2G</span>
+            </a>
+            <a href="https://github.com/nubsuki/g2g" target="_blank" class="project-card-arrow" title="View on GitHub">
+              <i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+          <p class="project-card-desc">
+            An end-to-end machine learning platform engineered to predict PC gaming FPS performance across diverse
+            hardware configurations (CPU, GPU, RAM) and graphical presets. Utilizes an ensemble regression pipeline
+            combining XGBoost, LightGBM, and RandomForest models trained on over 1,790 real-world benchmark entries,
+            paired with ProtonDB integration for Linux and Steam Deck compatibility assessments.
+          </p>
+          <div class="project-meta-list">
+            <div class="project-meta-item">
+              <span class="meta-label">Project Type:</span>
+              <span class="meta-value">University Final Year Development Project</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="meta-label">Academic Year:</span>
+              <span class="meta-value">2025</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="meta-label">Technology Focus:</span>
+              <span class="meta-value">Machine Learning, Web Development, Data Science</span>
+            </div>
+          </div>
+
+          <div class="project-card-datasets">
+            <div class="datasets-subheading"><i class="bi bi-database"></i> Training &amp; Benchmark Datasets:</div>
+            <ul class="datasets-list">
+              <li>
+                <a href="datasets/game_benchmarks.csv" download="game_benchmarks.csv" class="dataset-item">
+                  <div class="dataset-info">
+                    <span class="dataset-title"><i class="bi bi-filetype-csv"></i> Game Benchmarks</span>
+                    <span class="dataset-meta">1,790 rows • 130 KB • CSV</span>
+                  </div>
+                  <span class="dataset-dl-icon" title="Download CSV"><i class="bi bi-download"></i></span>
+                </a>
+              </li>
+              <li>
+                <a href="datasets/cpu_benchmarks.csv" download="cpu_benchmarks.csv" class="dataset-item">
+                  <div class="dataset-info">
+                    <span class="dataset-title"><i class="bi bi-filetype-csv"></i> CPU Benchmarks</span>
+                    <span class="dataset-meta">1,848 rows • 79 KB • CSV</span>
+                  </div>
+                  <span class="dataset-dl-icon" title="Download CSV"><i class="bi bi-download"></i></span>
+                </a>
+              </li>
+              <li>
+                <a href="datasets/gpu_benchmarks.csv" download="gpu_benchmarks.csv" class="dataset-item">
+                  <div class="dataset-info">
+                    <span class="dataset-title"><i class="bi bi-filetype-csv"></i> GPU Benchmarks</span>
+                    <span class="dataset-meta">121 rows • 3.1 KB • CSV</span>
+                  </div>
+                  <span class="dataset-dl-icon" title="Download CSV"><i class="bi bi-download"></i></span>
+                </a>
+              </li>
+              <li>
+                <a href="datasets/game_requirements.csv" download="game_requirements.csv" class="dataset-item">
+                  <div class="dataset-info">
+                    <span class="dataset-title"><i class="bi bi-filetype-csv"></i> Game Requirements</span>
+                    <span class="dataset-meta">26 games • 1.7 KB • CSV</span>
+                  </div>
+                  <span class="dataset-dl-icon" title="Download CSV"><i class="bi bi-download"></i></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2. ILoveFFmpeg (Apps) -->
+        <div class="project-card" data-category="apps">
+          <div class="project-card-header">
+            <a href="https://github.com/nubsuki/iloveffmpeg" target="_blank" class="project-card-title project-title-link">
+              <i class="bi bi-film"></i>
+              <span>ILoveFFmpeg</span>
+            </a>
+            <a href="https://github.com/nubsuki/iloveffmpeg" target="_blank" class="project-card-arrow" title="View on GitHub">
+              <i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+          <p class="project-card-desc">
+            A client-side multimedia processing suite running WebAssembly-compiled FFmpeg (FFmpeg.wasm) entirely within
+            your browser. Perform lossless video trimming, splitting, format conversions (MP4, MKV, AVI, WebM), and
+            audio track extraction locally on your machine with zero file uploads, zero server tracking, and complete
+            privacy.
+          </p>
+          <div class="project-card-media">
+            <div class="project-media-header"><i class="bi bi-image"></i> Interface Preview:</div>
+            <div class="project-image-wrapper">
+              <img src="p_assets/iloveffmpeg.png" alt="ILoveFFmpeg Interface Screenshot" loading="lazy" class="project-image-preview" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. PteroPal (Tools) -->
+        <a href="https://github.com/nubsuki/PteroPal" target="_blank" class="project-card" data-category="tools">
+          <div class="project-card-header">
+            <div class="project-card-title">
+              <i class="bi bi-robot"></i>
+              <span>PteroPal</span>
+            </div>
+            <i class="bi bi-arrow-up-right project-card-arrow"></i>
+          </div>
+          <p class="project-card-desc">
+            An automated game server management and backup companion built for Pterodactyl Panel and Crafty Controller.
+            Features a centralized web dashboard, Discord bot commands for remote server power cycling and status
+            alerts, automated cloud backups (Google Drive, S3, SFTP), and schedule management to prevent save data loss.
+          </p>
+        </a>
+
+        <!-- 4. VTuber Mouse Bridge (Tools) -->
+        <a href="https://github.com/nubsuki/Mouse-tracker/releases" target="_blank" class="project-card"
+          data-category="tools">
+          <div class="project-card-header">
+            <div class="project-card-title">
+              <i class="bi bi-cursor-fill"></i>
+              <span>VTuber Mouse Bridge</span>
+            </div>
+            <i class="bi bi-arrow-up-right project-card-arrow"></i>
+          </div>
+          <p class="project-card-desc">
+            A specialized background utility designed for VTubers and content creators. Captures low-level raw Windows
+            mouse hardware events and streams cursor coordinates directly to VTube Studio over WebSocket API. This
+            allows VTuber avatar eyes and head tracking to follow mouse movements continuously even in full-screen games
+            where the OS cursor is locked, captured, or invisible.
+          </p>
+        </a>
+
+        <!-- 5. Nekoframe (Tools) -->
+        <div class="project-card" data-category="tools">
+          <div class="project-card-header">
+            <a href="https://github.com/nubsuki/Nekoframe" target="_blank" class="project-card-title project-title-link">
+              <i class="bi bi-activity"></i>
+              <span>Nekoframe</span>
+            </a>
+            <a href="https://github.com/nubsuki/Nekoframe" target="_blank" class="project-card-arrow" title="View on GitHub">
+              <i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+          <p class="project-card-desc">
+            A lightweight system monitoring application built with Tauri. Runs efficiently in the background to capture
+            real-time hardware metrics (CPU, GPU, RAM, and drive usage) and streams them over a local WebSocket to
+            deliver live system stats to Windows desktop wallpapers and widgets.
+          </p>
+          <div class="project-card-media">
+            <div class="project-media-header"><i class="bi bi-image"></i> Interface Preview:</div>
+            <div class="project-image-wrapper">
+              <img src="https://raw.githubusercontent.com/nubsuki/Nekoframe/main/Assets/NekoFrame.png" alt="Nekoframe Interface Screenshot" loading="lazy" class="project-image-preview" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Wallux (Apps) -->
+        <div class="project-card" data-category="apps">
+          <div class="project-card-header">
+            <a href="https://github.com/nubsuki/Wallux_wallpaper-engine" target="_blank" class="project-card-title project-title-link">
+              <i class="bi bi-display"></i>
+              <span>Wallux (Wallpaper Engine)</span>
+            </a>
+            <a href="https://github.com/nubsuki/Wallux_wallpaper-engine" target="_blank" class="project-card-arrow" title="View on GitHub">
+              <i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+          <p class="project-card-desc">
+            A dynamic sci-fi wallpaper application for Wallpaper Engine and Windows desktop. Connects directly with
+            Nekoframe to render live PC hardware statistics (CPU, RAM, GPU, drive space) and real-time audio spectrum
+            visualizers straight onto your Windows wallpaper.
+          </p>
+          <div class="project-card-video">
+            <div class="video-preview-header"><i class="bi bi-youtube"></i> Demo &amp; Quick-Guide:</div>
+            <div class="video-embed-wrapper" data-video-id="VRLvY5bjuP8">
+              <div class="video-poster" style="background-image: url('https://img.youtube.com/vi/VRLvY5bjuP8/maxresdefault.jpg');" title="Play Video Demo">
+                <button type="button" class="video-play-btn" aria-label="Play video">
+                  <i class="bi bi-play-fill"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. YouTube Music App (Apps) -->
+        <div class="project-card" data-category="apps">
+          <div class="project-card-header">
+            <a href="https://github.com/nubsuki/YouTube-Music-Player" target="_blank" class="project-card-title project-title-link">
+              <i class="bi bi-music-note-beamed"></i>
+              <span>YouTube Music App</span>
+            </a>
+            <a href="https://github.com/nubsuki/YouTube-Music-Player" target="_blank" class="project-card-arrow" title="View on GitHub">
+              <i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+          <p class="project-card-desc">
+            A lightweight standalone desktop client for YouTube Music designed to eliminate heavy browser tabs and
+            memory overhead. Provides seamless background audio playback, persistent media control key shortcuts,
+            desktop notifications for track changes, and a distraction-free minimalist interface.
+          </p>
+          <div class="project-card-media">
+            <div class="project-media-header"><i class="bi bi-image"></i> Interface Preview:</div>
+            <div class="project-image-wrapper">
+              <img src="https://raw.githubusercontent.com/nubsuki/YouTube-Music-Player/better/assets/ytmp-d2.png" alt="YouTube Music App Screenshot" loading="lazy" class="project-image-preview" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Music Downloader (Apps) -->
+        <div class="project-card" data-category="apps">
+          <div class="project-card-header">
+            <a href="https://github.com/nubsuki/music-downloader" target="_blank" class="project-card-title project-title-link">
+              <i class="bi bi-cloud-arrow-down-fill"></i>
+              <span>Music Downloader</span>
+            </a>
+            <a href="https://github.com/nubsuki/music-downloader" target="_blank" class="project-card-arrow" title="View on GitHub">
+              <i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+          <p class="project-card-desc">
+            A fast web-based audio retrieval application leveraging yt-dlp and spotdl under the hood. Allows users to
+            paste song, album, or playlist links to automatically fetch high-bitrate audio with embedded cover art and
+            ID3 metadata tags directly through a clean browser interface.
+          </p>
+          <div class="project-card-media">
+            <div class="project-media-header"><i class="bi bi-image"></i> Interface Preview:</div>
+            <div class="project-image-wrapper">
+              <img src="https://raw.githubusercontent.com/nubsuki/music-downloader/main/assets/image.png" alt="Music Downloader Screenshot" loading="lazy" class="project-image-preview" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. YouTube Downloader (Apps) -->
+        <div class="project-card" data-category="apps">
+          <div class="project-card-header">
+            <a href="https://github.com/nubsuki/YouTube-Downloader" target="_blank" class="project-card-title project-title-link">
+              <i class="bi bi-youtube"></i>
+              <span>YouTube Downloader</span>
+            </a>
+            <a href="https://github.com/nubsuki/YouTube-Downloader" target="_blank" class="project-card-arrow" title="View on GitHub">
+              <i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+          <p class="project-card-desc">
+            A simple and straightforward desktop utility designed for rapid YouTube video and audio downloading.
+            Automatically queries YouTube video streams to list all available resolutions and audio formats, letting
+            users select quality preferences and download full HD/4K MP4 videos or high-quality MP3s with a single
+            click.
+          </p>
+          <div class="project-card-media">
+            <div class="project-media-header"><i class="bi bi-image"></i> Interface Preview:</div>
+            <div class="project-image-wrapper">
+              <img src="https://raw.githubusercontent.com/nubsuki/YouTube-Downloader/main/ytvd.png" alt="YouTube Downloader Screenshot" loading="lazy" class="project-image-preview" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Empty search result state -->
+        <div class="projects-empty-state" id="projects-empty-state">
+          <i class="bi bi-folder-x"></i>
+          <p>No projects match your search criteria.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/miyabi.js"></script>
+  <script src="js/discord.js"></script>
   <script src="js/index.js"></script>
+  <script src="js/projects.js"></script>
   <script src="js/terminal.js"></script>
 </body>
 
