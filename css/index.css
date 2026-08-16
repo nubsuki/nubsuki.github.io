@@ -44,6 +44,20 @@ body {
     padding: 20px;
 }
 
+.main-container .content-box {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.2s ease,
+                background 0.2s ease;
+}
+
+.main-container .content-box.box-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .content-box h2 {
     color: #ffffff;
     font-size: 1.2rem;

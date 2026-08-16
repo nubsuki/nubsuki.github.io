@@ -143,13 +143,13 @@ function initMinecraftCopy() {
 
 // --- Live Minecraft Server Status (via mcsrvstat.us API) ---
 function initMinecraftStatus() {
-  const statusBadge  = document.getElementById("mc-status-badge");
-  const statusText   = document.getElementById("mc-status-text");
+  const statusBadge = document.getElementById("mc-status-badge");
+  const statusText = document.getElementById("mc-status-text");
   const playersCount = document.getElementById("mc-players-count");
-  const javaVer      = document.getElementById("mc-java-ver");
+  const javaVer = document.getElementById("mc-java-ver");
 
   const widgetBadge = document.getElementById("mc-widget-status-badge");
-  const widgetText  = document.getElementById("mc-widget-status-text");
+  const widgetText = document.getElementById("mc-widget-status-text");
 
   async function fetchStatus() {
     try {
@@ -166,14 +166,16 @@ function initMinecraftStatus() {
           javaVer.innerText = data.version;
         }
 
-        if (widgetBadge) widgetBadge.className = "mc-widget-status-badge online";
+        if (widgetBadge)
+          widgetBadge.className = "mc-widget-status-badge online";
         if (widgetText) widgetText.innerText = "Online";
       } else {
         if (statusBadge) statusBadge.className = "mc-status-badge offline";
         if (statusText) statusText.innerText = "Offline";
         if (playersCount) playersCount.innerText = "0 / 20";
 
-        if (widgetBadge) widgetBadge.className = "mc-widget-status-badge offline";
+        if (widgetBadge)
+          widgetBadge.className = "mc-widget-status-badge offline";
         if (widgetText) widgetText.innerText = "Offline";
       }
     } catch (e) {
@@ -188,5 +190,25 @@ function initMinecraftStatus() {
   setInterval(fetchStatus, 30000); // Check every 30s
 }
 
+// --- Staggered Entrance Animation for index.html boxes ---
+function initIndexEntrance() {
+  const boxes = document.querySelectorAll(".main-container .content-box");
+  if (boxes.length === 0) return;
+
+  const isIntroActive =
+    !sessionStorage.getItem("introShown") &&
+    document.getElementById("loading-screen");
+  const baseDelay = isIntroActive ? 2200 : 250;
+
+  setTimeout(() => {
+    boxes.forEach((box, index) => {
+      setTimeout(() => {
+        box.classList.add("box-visible");
+      }, index * 80);
+    });
+  }, baseDelay);
+}
+
 initMinecraftCopy();
 initMinecraftStatus();
+initIndexEntrance();

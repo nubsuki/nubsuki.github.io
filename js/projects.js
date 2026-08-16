@@ -1,10 +1,30 @@
 document.addEventListener("DOMContentLoaded", function () {
+  initProjectEntrance();
   initProjectFilters();
   initProjectSearch();
   initVideoEmbeds();
 });
 
-// Category filtering
+// Staggered card entrance animation after navbar loads
+function initProjectEntrance() {
+  const cards = document.querySelectorAll(".project-card");
+
+  // Determine delay based on whether intro loading overlay is active
+  const isIntroActive =
+    !sessionStorage.getItem("introShown") &&
+    document.getElementById("loading-screen");
+  const baseDelay = isIntroActive ? 2200 : 250;
+
+  setTimeout(() => {
+    cards.forEach((card, index) => {
+      setTimeout(() => {
+        card.classList.add("card-visible");
+      }, index * 85);
+    });
+  }, baseDelay);
+}
+
+// Category filtering with smooth stagger
 function initProjectFilters() {
   const filterBtns = document.querySelectorAll(".filter-btn");
   const cards = document.querySelectorAll(".project-card");
@@ -16,20 +36,25 @@ function initProjectFilters() {
       btn.classList.add("active");
 
       const filter = btn.getAttribute("data-filter");
-      let visibleCount = 0;
+      let visibleIndex = 0;
 
       cards.forEach((card) => {
         const category = card.getAttribute("data-category");
         if (filter === "all" || category === filter) {
           card.style.display = "flex";
-          visibleCount++;
+          card.classList.remove("card-visible");
+          setTimeout(() => {
+            card.classList.add("card-visible");
+          }, visibleIndex * 60);
+          visibleIndex++;
         } else {
+          card.classList.remove("card-visible");
           card.style.display = "none";
         }
       });
 
       if (emptyState) {
-        emptyState.style.display = visibleCount === 0 ? "block" : "none";
+        emptyState.style.display = visibleIndex === 0 ? "block" : "none";
       }
     });
   });
@@ -55,8 +80,10 @@ function initProjectSearch() {
       const text = card.textContent.toLowerCase();
       if (text.includes(query)) {
         card.style.display = "flex";
+        card.classList.add("card-visible");
         visibleCount++;
       } else {
+        card.classList.remove("card-visible");
         card.style.display = "none";
       }
     });
@@ -70,7 +97,11 @@ function initProjectSearch() {
     clearBtn.addEventListener("click", () => {
       searchInput.value = "";
       clearBtn.style.display = "none";
-      cards.forEach((card) => (card.style.display = "flex"));
+      cards.forEach((card, index) => {
+        card.style.display = "flex";
+        card.classList.remove("card-visible");
+        setTimeout(() => card.classList.add("card-visible"), index * 50);
+      });
       if (emptyState) emptyState.style.display = "none";
       searchInput.focus();
     });
