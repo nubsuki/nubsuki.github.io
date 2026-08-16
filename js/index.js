@@ -3,6 +3,31 @@ fetch("addons/navbar.html")
   .then((res) => res.text())
   .then((html) => {
     document.getElementById("navbar-placeholder").innerHTML = html;
+
+    // Attach email button handler here — scripts inside innerHTML never execute
+    const emailBtn = document.getElementById("navbar-email-btn");
+    if (emailBtn) {
+      emailBtn.addEventListener("click", function () {
+        const icon = document.getElementById("navbar-email-icon");
+
+        // Open mail client
+        const a = document.createElement("a");
+        a.href = "mailto:nubsuki@proton.me";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+
+        // Copy to clipboard + play animation
+        navigator.clipboard.writeText("nubsuki@proton.me").catch(() => {});
+        icon.className = "bi bi-envelope-check";
+        emailBtn.classList.add("navbar-email-copied");
+
+        setTimeout(() => {
+          icon.className = "bi bi-envelope-at";
+          emailBtn.classList.remove("navbar-email-copied");
+        }, 2000);
+      });
+    }
   })
   .catch((err) => console.error("Failed to load navbar:", err));
 
