@@ -21,18 +21,55 @@
   <!-- Main Content (hidden behind loader initially) -->
   <section id="navbar-placeholder"></section>
 
-  <section id="Heding">
-    <h1 class="hero-title">
-      <span id="typewriter-text"></span><img src="assets/miyabi.gif" id="miyabi-gif" alt="Miyabi" />
-    </h1>
-    <div id="hero-subtext">
-      <p>what i do ?</p>
-      <p>i do play games and streams sometimes & i like to make my life esier so i build stuff like tools ,
-        bots , etc.. </p>
-      <p> </p>
-    </div>
-  </section>
+  <main class="main-container">
+    <div class="left-column">
+      <!-- Welcome Box -->
+      <section id="Heding" class="content-box">
+        <h1 class="hero-title">
+          <span id="typewriter-text"></span><img src="assets/miyabi.gif" id="miyabi-gif" alt="Miyabi" />
+        </h1>
+        <div id="hero-subtext">
+          <p>what i do ?</p>
+          <p>i do play games and streams sometimes & i like to make my life esier so i build stuff like tools ,
+            bots , etc.. </p>
+          <p> </p>
+        </div>
+      </section>
 
+      <!-- Blog Box (Example Placeholder) -->
+      <section class="content-box">
+        <h2>🌙 BLOG</h2>
+        <ul>
+          <li>Japan trip in Spring 2026 — May 19, 2026</li>
+          <li>WebTiles: It's fine to accept user-supplied code — Feb 28, 2026</li>
+          <li>Eastern Europe trip in October 2025 — Oct 20, 2025</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="right-column">
+      <!-- Stars Box (Example Placeholder) -->
+      <section class="content-box">
+        <h2>🌟 STATS</h2>
+        <ul>
+          <li>Class: Employed / Gamer</li>
+          <li>HP: 69/100</li>
+          <li>MP: 40/100</li>
+          <li>Status: Alive</li>
+          <li>Mood: Normal</li>
+        </ul>
+      </section>
+
+      <!-- Status Box -->
+      <section class="content-box" id="discord-status-box">
+        <h2 id="discord-status-text">I'm OFFLINE!</h2>
+        <div id="discord-activity"></div>
+      </section>
+    </div>
+  </main>
+
+  <script src="js/miyabi.js"></script>
+  <script src="js/discord.js"></script>
   <script src="js/index.js"></script>
   <script src="js/terminal.js"></script>
 </body>

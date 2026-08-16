@@ -159,10 +159,6 @@
 }
 
 @media (max-width: 520px) {
-  .navbar-links {
-    display: none;
-  }
-
   .navbar-inner {
     padding: 5px;
   }
