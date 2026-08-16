@@ -19,7 +19,7 @@
   <!-- Loading Screen Overlay -->
   <section id="loading-screen"></section>
 
-  <!-- Main Content (hidden behind loader initially) -->
+  <!-- Main Content -->
   <section id="navbar-placeholder"></section>
 
   <main class="main-container">
@@ -37,27 +37,132 @@
         </div>
       </section>
 
-      <!-- Blog Box (Example Placeholder) -->
+      <!-- Projects Box -->
       <section class="content-box">
-        <h2>🌙 BLOG</h2>
-        <ul>
-          <li>Japan trip in Spring 2026 — May 19, 2026</li>
-          <li>WebTiles: It's fine to accept user-supplied code — Feb 28, 2026</li>
-          <li>Eastern Europe trip in October 2025 — Oct 20, 2025</li>
-        </ul>
+        <h2><i class="bi bi-code-slash"></i> PROJECTS</h2>
+        <div class="projects-grid">
+
+          <a href="https://github.com/nubsuki/PteroPal" target="_blank" class="project-card">
+            <div class="project-card-header">
+              <div class="project-card-title">
+                <i class="bi bi-robot"></i>
+                <span>PteroPal</span>
+              </div>
+              <i class="bi bi-arrow-up-right project-card-arrow"></i>
+            </div>
+            <p class="project-card-desc">Game server manager & backup tool for Pterodactyl and Crafty Controller with
+              web dashboard, Discord bot, and auto cloud backups.</p>
+            <div class="project-tags">
+              <img src="https://ghcr-badge.elias.eu.org/shield/nubsuki/pteropal" alt="GHCR Pulls"
+                class="project-badge" />
+            </div>
+          </a>
+
+          <a href="https://github.com/nubsuki/Mouse-tracker/releases" target="_blank" class="project-card">
+            <div class="project-card-header">
+              <div class="project-card-title">
+                <i class="bi bi-cursor-fill"></i>
+                <span>VTuber Mouse Bridge</span>
+              </div>
+              <i class="bi bi-arrow-up-right project-card-arrow"></i>
+            </div>
+            <p class="project-card-desc">Sends raw mouse movement directly to VTube Studio, even during full-screen
+              games when cursor is locked or hidden.</p>
+            <div class="project-tags">
+              <img src="https://img.shields.io/github/downloads/nubsuki/Mouse-tracker/total?label=Downloads"
+                alt="GitHub release Downloads" class="project-badge" />
+            </div>
+          </a>
+
+          <a href="https://github.com/nubsuki/YouTube-Music-Player" target="_blank" class="project-card">
+            <div class="project-card-header">
+              <div class="project-card-title">
+                <i class="bi bi-music-note-beamed"></i>
+                <span>YouTube Music App</span>
+              </div>
+              <i class="bi bi-arrow-up-right project-card-arrow"></i>
+            </div>
+            <p class="project-card-desc">A simple, lightweight desktop application for streaming YouTube Music
+              seamlessly without browser clutter.</p>
+            <div class="project-tags">
+              <img src="https://img.shields.io/github/downloads/nubsuki/YouTube-Music-Player/total?label=Downloads"
+                alt="GitHub release Downloads" class="project-badge" />
+            </div>
+          </a>
+
+          <a href="https://github.com/nubsuki/music-downloader" target="_blank" class="project-card">
+            <div class="project-card-header">
+              <div class="project-card-title">
+                <i class="bi bi-cloud-arrow-down-fill"></i>
+                <span>Music Downloader</span>
+              </div>
+              <i class="bi bi-arrow-up-right project-card-arrow"></i>
+            </div>
+            <p class="project-card-desc">A web-based music downloader application built with yt-dlp and spotdl for fast
+              high-quality song downloads.</p>
+            <div class="project-tags">
+              <img src="https://ghcr-badge.elias.eu.org/shield/nubsuki/music-downloader/music-downloader"
+                alt="GHCR Pulls" class="project-badge" />
+            </div>
+          </a>
+
+        </div>
       </section>
+
+      <!-- YouTube Box -->
+      <section class="content-box yt-box">
+        <div class="yt-card">
+          <div class="yt-info">
+            <div class="yt-header">
+              <i class="bi bi-youtube" style="color:#ff4444; font-size:1.4rem;"></i>
+              <span class="yt-label">YouTube</span>
+            </div>
+            <p class="yt-channel">@nubsuki</p>
+            <p class="yt-desc">games, streams, edits & random stuff</p>
+            <a href="https://www.youtube.com/@nubsuki" target="_blank" class="yt-sub-btn" id="yt-sub-btn">
+              <i class="bi bi-bell-fill"></i> Subscribe
+            </a>
+          </div>
+          <img src="assets/miyabi sub.gif" class="yt-miyabi" alt="Miyabi sub" />
+        </div>
+      </section>
+
     </div>
 
     <div class="right-column">
-      <!-- Stars Box (Example Placeholder) -->
+      <!-- Socials Box -->
       <section class="content-box">
-        <h2>🌟 STATS</h2>
-        <ul>
-          <li>Class: Employed / Gamer</li>
-          <li>HP: 69/100</li>
-          <li>MP: 40/100</li>
-          <li>Status: Alive</li>
-          <li>Mood: Normal</li>
+        <ul class="socials-list">
+          <li>
+            <a href="https://github.com/nubsuki/" target="_blank" class="social-link" id="social-github">
+              <i class="bi bi-github social-icon"></i>
+              <div class="social-info">
+                <span class="social-platform">GitHub</span>
+                <span class="social-handle">nubsuki</span>
+              </div>
+              <i class="bi bi-arrow-up-right social-arrow"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/@nubsuki" target="_blank" class="social-link" id="social-youtube">
+              <i class="bi bi-youtube social-icon"></i>
+              <div class="social-info">
+                <span class="social-platform">YouTube</span>
+                <span class="social-handle">@nubsuki</span>
+              </div>
+              <i class="bi bi-arrow-up-right social-arrow"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://buymeacoffee.com/nubsuki" target="_blank" class="social-link" id="social-bmc">
+              <i class="bi bi-cup-hot-fill social-icon"></i>
+              <div class="social-info">
+                <span class="social-platform">Buy Me a Coffee</span>
+                <span class="social-handle">nubsuki</span>
+              </div>
+              <i class="bi bi-arrow-up-right social-arrow"></i>
+            </a>
+          </li>
         </ul>
       </section>
 
@@ -66,6 +171,51 @@
         <h2 id="discord-status-text">I'm OFFLINE!</h2>
         <div id="discord-activity"></div>
       </section>
+
+      <!-- Dataset Box -->
+      <section class="content-box">
+        <h2><i class="bi bi-database"></i> DATASETS</h2>
+        <p class="dataset-summary">Benchmark & hardware data created for public use.</p>
+        <ul class="datasets-list">
+          <li>
+            <a href="datasets/game_benchmarks.csv" download="game_benchmarks.csv" class="dataset-item">
+              <div class="dataset-info">
+                <span class="dataset-title"><i class="bi bi-filetype-csv"></i> Game Benchmarks</span>
+                <span class="dataset-meta">1,790 rows • 130 KB • CSV</span>
+              </div>
+              <span class="dataset-dl-icon" title="Download CSV"><i class="bi bi-download"></i></span>
+            </a>
+          </li>
+          <li>
+            <a href="datasets/cpu_benchmarks.csv" download="cpu_benchmarks.csv" class="dataset-item">
+              <div class="dataset-info">
+                <span class="dataset-title"><i class="bi bi-filetype-csv"></i> CPU Benchmarks</span>
+                <span class="dataset-meta">1,848 rows • 79 KB • CSV</span>
+              </div>
+              <span class="dataset-dl-icon" title="Download CSV"><i class="bi bi-download"></i></span>
+            </a>
+          </li>
+          <li>
+            <a href="datasets/gpu_benchmarks.csv" download="gpu_benchmarks.csv" class="dataset-item">
+              <div class="dataset-info">
+                <span class="dataset-title"><i class="bi bi-filetype-csv"></i> GPU Benchmarks</span>
+                <span class="dataset-meta">121 rows • 3.1 KB • CSV</span>
+              </div>
+              <span class="dataset-dl-icon" title="Download CSV"><i class="bi bi-download"></i></span>
+            </a>
+          </li>
+          <li>
+            <a href="datasets/game_requirements.csv" download="game_requirements.csv" class="dataset-item">
+              <div class="dataset-info">
+                <span class="dataset-title"><i class="bi bi-filetype-csv"></i> Game Requirements</span>
+                <span class="dataset-meta">26 games • 1.7 KB • CSV</span>
+              </div>
+              <span class="dataset-dl-icon" title="Download CSV"><i class="bi bi-download"></i></span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
     </div>
   </main>
 
