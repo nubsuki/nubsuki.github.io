@@ -498,3 +498,411 @@ body {
     background: #55c4d3;
     color: #111;
 }
+
+/* Minecraft Server Box */
+.mc-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.mc-header h2 {
+    margin-bottom: 0;
+}
+
+.mc-badges {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.mc-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #888;
+}
+
+.mc-status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #888;
+}
+
+.mc-status-badge.online {
+    color: #43b581;
+    background: rgba(67, 181, 129, 0.12);
+    border-color: rgba(67, 181, 129, 0.3);
+}
+
+.mc-status-badge.online .mc-status-dot {
+    background: #43b581;
+    box-shadow: 0 0 8px #43b581;
+    animation: mc-pulse 2s infinite;
+}
+
+.mc-status-badge.offline {
+    color: #f04747;
+    background: rgba(240, 71, 71, 0.1);
+    border-color: rgba(240, 71, 71, 0.25);
+}
+
+.mc-status-badge.offline .mc-status-dot {
+    background: #f04747;
+}
+
+@keyframes mc-pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(67, 181, 129, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(67, 181, 129, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(67, 181, 129, 0); }
+}
+
+.mc-crossplay-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #43b581;
+    background: rgba(67, 181, 129, 0.1);
+    border: 1px solid rgba(67, 181, 129, 0.25);
+    padding: 3px 8px;
+    border-radius: 20px;
+}
+
+.mc-desc {
+    font-size: 0.85rem;
+    color: #a0a0a0;
+    line-height: 1.5;
+}
+
+.mc-hosts-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+}
+
+.mc-hosts-label {
+    color: #777;
+    font-size: 0.78rem;
+}
+
+.mc-host-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 3px 9px;
+    border-radius: 6px;
+    color: #eee;
+    font-size: 0.78rem;
+    font-weight: 500;
+}
+
+.mc-hosts-sep {
+    color: #666;
+    font-size: 0.78rem;
+}
+
+.mc-host-link {
+    text-decoration: none;
+    color: #eee;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.mc-host-link i.bi-youtube {
+    color: #ff4444;
+}
+
+.mc-host-arrow {
+    font-size: 0.7rem;
+    color: #777;
+    transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.mc-host-link:hover {
+    background: rgba(255, 68, 68, 0.08);
+    border-color: rgba(255, 68, 68, 0.3);
+    color: #ff4444;
+}
+
+.mc-host-link:hover .mc-host-arrow {
+    color: #ff4444;
+    transform: translate(1px, -1px);
+}
+
+.mc-ip-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    gap: 10px;
+}
+
+.mc-ip-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.mc-ip-label {
+    font-size: 0.7rem;
+    color: #777;
+    letter-spacing: 0.05em;
+}
+
+.mc-ip-code {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #55c4d3;
+    letter-spacing: 0.02em;
+}
+
+.mc-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mc-copy-btn:hover {
+    background: #55c4d3;
+    color: #111;
+    border-color: #55c4d3;
+}
+
+.mc-copy-btn.copied {
+    background: #43b581;
+    color: #fff;
+    border-color: #43b581;
+}
+
+.mc-versions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.mc-version-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+.mc-ver-label {
+    color: #888;
+}
+
+.mc-ver-val {
+    color: #fff;
+    font-weight: 600;
+}
+
+.mc-whitelist-box {
+    background: rgba(255, 255, 255, 0.02);
+    border-left: 3px solid #ff7b00;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mc-whitelist-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ff7b00;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.mc-whitelist-steps {
+    margin: 0;
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.mc-whitelist-steps li {
+    font-size: 0.8rem;
+    color: #bbb;
+    line-height: 1.45;
+}
+
+.mc-whitelist-steps li strong {
+    color: #fff;
+}
+
+.mc-link {
+    color: #55c4d3;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.15s ease;
+}
+
+.mc-link:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Minecraft Sidebar Widget */
+.mc-widget-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+}
+
+.mc-widget-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mc-widget-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.mc-widget-title-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    flex-grow: 1;
+}
+
+.mc-widget-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.mc-widget-sub {
+    font-size: 0.72rem;
+    color: #888;
+}
+
+.mc-widget-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #888;
+}
+
+.mc-widget-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #888;
+}
+
+.mc-widget-status-badge.online {
+    color: #43b581;
+    background: rgba(67, 181, 129, 0.12);
+    border-color: rgba(67, 181, 129, 0.3);
+}
+
+.mc-widget-status-badge.online .mc-widget-status-dot {
+    background: #43b581;
+    box-shadow: 0 0 6px #43b581;
+    animation: mc-pulse 2s infinite;
+}
+
+.mc-widget-status-badge.offline {
+    color: #f04747;
+    background: rgba(240, 71, 71, 0.1);
+    border-color: rgba(240, 71, 71, 0.25);
+}
+
+.mc-widget-status-badge.offline .mc-widget-status-dot {
+    background: #f04747;
+}
+
+.mc-widget-ip-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 10px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 6px;
+    gap: 6px;
+}
+
+.mc-widget-ip-label {
+    font-size: 0.72rem;
+    color: #777;
+}
+
+.mc-widget-ip-code {
+    font-size: 0.8rem;
+    color: #55c4d3;
+    font-weight: 600;
+    flex-grow: 1;
+}
+
+.mc-widget-copy-btn {
+    background: transparent;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 0.85rem;
+    padding: 3px 6px;
+    border-radius: 4px;
+    transition: color 0.15s ease, background 0.15s ease;
+}
+
+.mc-widget-copy-btn:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.mc-widget-copy-btn.copied {
+    color: #43b581;
+}

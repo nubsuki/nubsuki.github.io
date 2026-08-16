@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="css/loading.css" />
   <link rel="stylesheet" href="css/navbar.css" />
   <link rel="stylesheet" href="css/terminal.css" />
-  <link rel="icon" type="image/gif" href="assets/bochchi.jpg" />
+  <link rel="icon" type="image/jpeg" href="assets/bochchi.jpg" />
   <title>nubsuki.exe</title>
 </head>
 
@@ -128,6 +128,74 @@
         </div>
       </section>
 
+      <!-- Minecraft Server Box -->
+      <section class="content-box mc-box">
+        <div class="mc-header">
+          <h2><i class="bi bi-controller"></i> BENCH WARMERS UNITED</h2>
+          <div class="mc-badges">
+            <span class="mc-status-badge" id="mc-status-badge">
+              <span class="mc-status-dot" id="mc-status-dot"></span>
+              <span id="mc-status-text">Checking...</span>
+            </span>
+            <span class="mc-crossplay-badge"><i class="bi bi-check-circle-fill"></i> Crossplay Enabled</span>
+          </div>
+        </div>
+
+        <p class="mc-desc">
+          Welcome to the Minecraft server! Whether you are playing on PC or Mobile (Java/Bedrock), crossplay is enabled
+          so everyone can play together.
+        </p>
+
+        <div class="mc-hosts-row">
+          <span class="mc-hosts-label">Hosted by:</span>
+          <span class="mc-host-tag"><i class="bi bi-person-fill"></i> nubsuki</span>
+          <span class="mc-hosts-sep">&</span>
+          <a href="https://www.youtube.com/@hypersama" target="_blank" class="mc-host-tag mc-host-link">
+            <i class="bi bi-youtube"></i> hypersama <i class="bi bi-arrow-up-right mc-host-arrow"></i>
+          </a>
+        </div>
+
+        <div class="mc-ip-card">
+          <div class="mc-ip-left">
+            <span class="mc-ip-label">SERVER IP</span>
+            <code class="mc-ip-code" id="mc-server-ip">bwu.nubsuki.xyz</code>
+          </div>
+          <button class="mc-copy-btn" id="mc-copy-btn" title="Copy Server IP">
+            <i class="bi bi-copy" id="mc-copy-icon"></i>
+            <span id="mc-copy-text">Copy IP</span>
+          </button>
+        </div>
+
+        <div class="mc-versions">
+          <div class="mc-version-pill">
+            <span class="mc-ver-icon"><i class="bi bi-cup-hot"></i></span>
+            <span class="mc-ver-label">Java:</span>
+            <span class="mc-ver-val" id="mc-java-ver">26.2</span>
+          </div>
+          <div class="mc-version-pill">
+            <span class="mc-ver-icon"><i class="bi bi-phone"></i></span>
+            <span class="mc-ver-label">Bedrock:</span>
+            <span class="mc-ver-val">Latest</span>
+          </div>
+          <div class="mc-version-pill" id="mc-players-pill">
+            <span class="mc-ver-icon"><i class="bi bi-people"></i></span>
+            <span class="mc-ver-label">Players:</span>
+            <span class="mc-ver-val" id="mc-players-count">-- / 20</span>
+          </div>
+        </div>
+
+        <div class="mc-whitelist-box">
+          <div class="mc-whitelist-title"><i class="bi bi-shield-lock-fill"></i> How to Get Whitelisted</div>
+          <ol class="mc-whitelist-steps">
+            <li>Try connecting <strong>3 times</strong> (this helps us find you in the logs!).</li>
+            <li>Message on <a href="https://discord.gg/McgHcXuuJD" target="_blank" class="mc-link"><i
+                  class="bi bi-discord"></i> Discord</a> or <a href="https://www.youtube.com/@hypersama" target="_blank"
+                class="mc-link"><i class="bi bi-youtube"></i> hypersama</a>.</li>
+            <li>Include your <strong>username</strong> and the <strong>time</strong> you tried connecting.</li>
+          </ol>
+        </div>
+      </section>
+
     </div>
 
     <div class="right-column">
@@ -165,6 +233,29 @@
             </a>
           </li>
         </ul>
+      </section>
+
+      <!-- Minecraft Server Widget -->
+      <section class="content-box mc-widget-box">
+        <div class="mc-widget-header">
+          <img src="assets/minecraft.png" alt="Minecraft" class="mc-widget-icon" />
+          <div class="mc-widget-title-wrap">
+            <span class="mc-widget-title">Minecraft Server</span>
+            <span class="mc-widget-sub">Java / Bedrock</span>
+          </div>
+          <span class="mc-widget-status-badge" id="mc-widget-status-badge">
+            <span class="mc-widget-status-dot" id="mc-widget-status-dot"></span>
+            <span id="mc-widget-status-text">...</span>
+          </span>
+        </div>
+
+        <div class="mc-widget-ip-row">
+          <span class="mc-widget-ip-label">IP:</span>
+          <code class="mc-widget-ip-code">bwu.nubsuki.xyz</code>
+          <button class="mc-widget-copy-btn" id="mc-widget-copy-btn" title="Copy Server IP">
+            <i class="bi bi-copy" id="mc-widget-copy-icon"></i>
+          </button>
+        </div>
       </section>
 
       <!-- Status Box -->

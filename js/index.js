@@ -36,10 +36,10 @@ fetch("addons/navbar.html")
   const loader = document.getElementById("loading-screen");
 
   function startHeroAnimation() {
-    const text         = "Wellcome to nubsuki.exe";
-    const textElement  = document.getElementById("typewriter-text");
-    const subtext      = document.getElementById("hero-subtext");
-    const gifElement   = document.getElementById("miyabi-gif");
+    const text = "Wellcome to nubsuki.exe";
+    const textElement = document.getElementById("typewriter-text");
+    const subtext = document.getElementById("hero-subtext");
+    const gifElement = document.getElementById("miyabi-gif");
 
     if (!textElement) return;
 
@@ -93,3 +93,90 @@ fetch("addons/navbar.html")
     })
     .catch((err) => console.error("Failed to load loading screen:", err));
 })();
+
+// --- Minecraft Server IP Copy Handlers ---
+function initMinecraftCopy() {
+  const btn = document.getElementById("mc-copy-btn");
+  const icon = document.getElementById("mc-copy-icon");
+  const text = document.getElementById("mc-copy-text");
+
+  if (btn) {
+    btn.addEventListener("click", () => {
+      navigator.clipboard.writeText("bwu.nubsuki.xyz").catch(() => {});
+      btn.classList.add("copied");
+      if (icon) icon.className = "bi bi-check2";
+      if (text) text.innerText = "Copied!";
+
+      setTimeout(() => {
+        btn.classList.remove("copied");
+        if (icon) icon.className = "bi bi-copy";
+        if (text) text.innerText = "Copy IP";
+      }, 2000);
+    });
+  }
+
+  const widgetBtn = document.getElementById("mc-widget-copy-btn");
+  const widgetIcon = document.getElementById("mc-widget-copy-icon");
+  if (widgetBtn) {
+    widgetBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText("bwu.nubsuki.xyz").catch(() => {});
+      widgetBtn.classList.add("copied");
+      if (widgetIcon) widgetIcon.className = "bi bi-check2";
+
+      setTimeout(() => {
+        widgetBtn.classList.remove("copied");
+        if (widgetIcon) widgetIcon.className = "bi bi-copy";
+      }, 2000);
+    });
+  }
+}
+
+// --- Live Minecraft Server Status (via mcsrvstat.us API) ---
+function initMinecraftStatus() {
+  const statusBadge  = document.getElementById("mc-status-badge");
+  const statusText   = document.getElementById("mc-status-text");
+  const playersCount = document.getElementById("mc-players-count");
+  const javaVer      = document.getElementById("mc-java-ver");
+
+  const widgetBadge = document.getElementById("mc-widget-status-badge");
+  const widgetText  = document.getElementById("mc-widget-status-text");
+
+  async function fetchStatus() {
+    try {
+      const res = await fetch("https://api.mcsrvstat.us/2/bwu.nubsuki.xyz");
+      const data = await res.json();
+
+      if (data.online) {
+        if (statusBadge) statusBadge.className = "mc-status-badge online";
+        if (statusText) statusText.innerText = "Online";
+        if (playersCount && data.players) {
+          playersCount.innerText = `${data.players.online} / ${data.players.max || 20}`;
+        }
+        if (javaVer && data.version) {
+          javaVer.innerText = data.version;
+        }
+
+        if (widgetBadge) widgetBadge.className = "mc-widget-status-badge online";
+        if (widgetText) widgetText.innerText = "Online";
+      } else {
+        if (statusBadge) statusBadge.className = "mc-status-badge offline";
+        if (statusText) statusText.innerText = "Offline";
+        if (playersCount) playersCount.innerText = "0 / 20";
+
+        if (widgetBadge) widgetBadge.className = "mc-widget-status-badge offline";
+        if (widgetText) widgetText.innerText = "Offline";
+      }
+    } catch (e) {
+      if (statusBadge) statusBadge.className = "mc-status-badge offline";
+      if (statusText) statusText.innerText = "Offline";
+      if (widgetBadge) widgetBadge.className = "mc-widget-status-badge offline";
+      if (widgetText) widgetText.innerText = "Offline";
+    }
+  }
+
+  fetchStatus();
+  setInterval(fetchStatus, 30000); // Check every 30s
+}
+
+initMinecraftCopy();
+initMinecraftStatus();
