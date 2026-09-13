@@ -29,6 +29,22 @@ const SNAPS_DATA = [
     capturedByUrl: "https://www.instagram.com/shou_chan002",
     url: "https://drive.google.com/file/d/13epl0xTIfD4h2Sb7Y9IIGraJb9ohplmG/view?usp=drive_link",
   },
+  {
+    title: "Lambargambar",
+    date: "FEB 04, 2026",
+    capturedBy: "nubsuki",
+    capturedByUrl: "https://www.instagram.com/nubsuki",
+    url: "https://drive.google.com/file/d/11Pv3Fe7R0N9Ubi1ynFVQ8gNZvyjpU1f4/view?usp=drive_link",
+  },
+  {
+    title: "Cultural pageant",
+    date: "SEP 12, 2026",
+    capturedBy: "nubsuki",
+    capturedByUrl: "https://www.instagram.com/nubsuki",
+    url: "https://drive.google.com/file/d/14HVWE3uB7-ocZ6Zx298bB4cJyRjpw99S/view?usp=drive_link",
+    location: "Kotte Raja Maha Vihara",
+    mapUrl: "https://share.google/mhnesdQUBqKgmdokj",
+  },
 ];
 
 let currentLightboxIndex = 0;
