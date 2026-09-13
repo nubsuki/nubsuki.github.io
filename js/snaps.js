@@ -45,6 +45,34 @@ const SNAPS_DATA = [
     location: "Kotte Raja Maha Vihara",
     mapUrl: "https://share.google/mhnesdQUBqKgmdokj",
   },
+  {
+    title: "Moon",
+    date: "JUN 21, 2024",
+    capturedBy: "nubsuki",
+    capturedByUrl: "https://www.instagram.com/nubsuki",
+    url: "https://drive.google.com/file/d/1ArnBo2pYdAEfOrUPK2k-lvXXxM0dFGbp/view?usp=drive_link",
+  },
+  {
+    title: "who's there?",
+    date: "FEB 05, 2025",
+    capturedBy: "nubsuki",
+    capturedByUrl: "https://www.instagram.com/nubsuki",
+    url: "https://drive.google.com/file/d/1opl555-Q3nphsUp1dJaYEHFpK-58EBGB/view?usp=drive_link",
+  },
+  {
+    title: "Dusk",
+    date: "SEP 05, 2025",
+    capturedBy: "Shou",
+    capturedByUrl: "https://www.instagram.com/shou_chan002",
+    url: "https://drive.google.com/file/d/1vNbVn6fypEv2Q2pP1xBnfAztzyDTCIb4/view?usp=drive_link",
+  },
+  {
+    title: "",
+    date: "SEP 05, 2025",
+    capturedBy: "Shou",
+    capturedByUrl: "https://www.instagram.com/shou_chan002",
+    url: "https://drive.google.com/file/d/16Y_FjcPZepwWPxpIRZ7U5IJo-4cAr0zi/view?usp=drive_link",
+  },
 ];
 
 let currentLightboxIndex = 0;
@@ -223,15 +251,20 @@ function renderSnaps() {
       const mapUrl = getMapUrl(snap);
       const imgUrl = resolveSnapUrl(snap.url);
       const hasChips = Boolean(location || author);
+      const title = (snap.title || "").trim();
+      const ariaLabel = title
+        ? `View photo: ${title}`
+        : `View photo from ${snap.date}`;
+      const imgAlt = title || "Snap photo";
 
       return `
-    <article class="snap-card" data-index="${index}" tabindex="0" role="button" aria-label="View photo: ${snap.title}">
+    <article class="snap-card" data-index="${index}" tabindex="0" role="button" aria-label="${ariaLabel}">
       <div class="snap-img-wrap">
-        <img src="${imgUrl}" alt="${snap.title}" loading="lazy" class="snap-img" />
+        <img src="${imgUrl}" alt="${imgAlt}" loading="lazy" class="snap-img" />
       </div>
       <div class="snap-meta-bar">
         <div class="snap-meta-top">
-          <span class="snap-title">${snap.title}</span>
+          ${title ? `<span class="snap-title">${title}</span>` : `<span class="snap-title-empty"></span>`}
           <span class="snap-date">${snap.date}</span>
         </div>
         ${
@@ -307,10 +340,19 @@ function initLightbox() {
     const author = getCapturedByInfo(snap);
     const mapUrl = getMapUrl(snap);
     const imgUrl = resolveSnapUrl(snap.url);
+    const title = (snap.title || "").trim();
 
     img.src = imgUrl;
-    img.alt = snap.title;
-    if (titleEl) titleEl.textContent = snap.title;
+    img.alt = title || "Snap photo";
+    if (titleEl) {
+      if (title) {
+        titleEl.textContent = title;
+        titleEl.style.display = "block";
+      } else {
+        titleEl.textContent = "";
+        titleEl.style.display = "none";
+      }
+    }
 
     if (date) {
       date.innerHTML = `<i class="bi bi-calendar3"></i> ${snap.date}`;
