@@ -9,6 +9,9 @@ fetch("addons/navbar.html")
     if (path.includes("projects")) {
       const navProjects = document.getElementById("nav-projects");
       if (navProjects) navProjects.classList.add("active");
+    } else if (path.includes("snaps")) {
+      const navSnaps = document.getElementById("nav-snaps");
+      if (navSnaps) navSnaps.classList.add("active");
     } else {
       const navHome = document.getElementById("nav-home");
       if (navHome) navHome.classList.add("active");
