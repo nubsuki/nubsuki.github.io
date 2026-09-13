@@ -48,8 +48,22 @@ const SNAPS_DATA = [
 ];
 
 let currentLightboxIndex = 0;
+let sortOrder = "added";
+let sortedSnaps = [];
 
-// Auto-convert Google Drive links to direct high-speed image stream
+// Sort snaps: preserves added order by default, or sorts by date when button clicked
+function getSortedSnaps() {
+  if (sortOrder === "added") {
+    return [...SNAPS_DATA];
+  }
+  return [...SNAPS_DATA].sort((a, b) => {
+    const timeA = new Date(a.date).getTime() || 0;
+    const timeB = new Date(b.date).getTime() || 0;
+    return sortOrder === "desc" ? timeB - timeA : timeA - timeB;
+  });
+}
+
+// Convert Google Drive links to direct high-speed image stream
 function resolveSnapUrl(url) {
   if (!url) return "";
   const driveFileMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
@@ -129,8 +143,55 @@ function getCapturedByInfo(snap) {
 document.addEventListener("DOMContentLoaded", function () {
   renderSnaps();
   initSnapsEntrance();
+  initSortControl();
   initLightbox();
 });
+
+// Controls Added / Newest / Oldest sorting
+function initSortControl() {
+  const sortBtn = document.getElementById("snaps-sort-btn");
+  const sortIcon = document.getElementById("snaps-sort-icon");
+  const sortLabel = document.getElementById("snaps-sort-label");
+
+  if (!sortBtn) return;
+
+  function updateSortUI() {
+    if (sortOrder === "added") {
+      if (sortIcon) sortIcon.className = "bi bi-arrow-down-up";
+      if (sortLabel) sortLabel.textContent = "Added";
+      sortBtn.title = "Current: Added order. Click to sort by Newest date.";
+    } else if (sortOrder === "desc") {
+      if (sortIcon) sortIcon.className = "bi bi-sort-down";
+      if (sortLabel) sortLabel.textContent = "Newest";
+      sortBtn.title = "Current: Newest first. Click to sort by Oldest date.";
+    } else if (sortOrder === "asc") {
+      if (sortIcon) sortIcon.className = "bi bi-sort-up";
+      if (sortLabel) sortLabel.textContent = "Oldest";
+      sortBtn.title = "Current: Oldest first. Click to return to Added order.";
+    }
+  }
+
+  updateSortUI();
+
+  sortBtn.addEventListener("click", function () {
+    if (sortOrder === "added") {
+      sortOrder = "desc";
+    } else if (sortOrder === "desc") {
+      sortOrder = "asc";
+    } else {
+      sortOrder = "added";
+    }
+
+    updateSortUI();
+    renderSnaps();
+
+    // Smooth staggered reveal
+    const cards = document.querySelectorAll(".snap-card");
+    cards.forEach((card, index) => {
+      setTimeout(() => card.classList.add("card-visible"), index * 40);
+    });
+  });
+}
 
 // Render cards into grid
 function renderSnaps() {
@@ -143,7 +204,9 @@ function renderSnaps() {
 
   if (!grid) return;
 
-  if (SNAPS_DATA.length === 0) {
+  sortedSnaps = getSortedSnaps();
+
+  if (sortedSnaps.length === 0) {
     grid.innerHTML = `
       <div class="snaps-empty-state">
         <i class="bi bi-camera"></i>
@@ -153,14 +216,15 @@ function renderSnaps() {
     return;
   }
 
-  grid.innerHTML = SNAPS_DATA.map((snap, index) => {
-    const location = snap.location || snap.loc;
-    const author = getCapturedByInfo(snap);
-    const mapUrl = getMapUrl(snap);
-    const imgUrl = resolveSnapUrl(snap.url);
-    const hasChips = Boolean(location || author);
+  grid.innerHTML = sortedSnaps
+    .map((snap, index) => {
+      const location = snap.location || snap.loc;
+      const author = getCapturedByInfo(snap);
+      const mapUrl = getMapUrl(snap);
+      const imgUrl = resolveSnapUrl(snap.url);
+      const hasChips = Boolean(location || author);
 
-    return `
+      return `
     <article class="snap-card" data-index="${index}" tabindex="0" role="button" aria-label="View photo: ${snap.title}">
       <div class="snap-img-wrap">
         <img src="${imgUrl}" alt="${snap.title}" loading="lazy" class="snap-img" />
@@ -195,7 +259,8 @@ function renderSnaps() {
       </div>
     </article>
   `;
-  }).join("");
+    })
+    .join("");
 }
 
 // Staggered card entrance
@@ -235,7 +300,7 @@ function initLightbox() {
 
   function openLightbox(index) {
     currentLightboxIndex = index;
-    const snap = SNAPS_DATA[currentLightboxIndex];
+    const snap = sortedSnaps[currentLightboxIndex];
     if (!snap) return;
 
     const location = snap.location || snap.loc;
@@ -308,15 +373,15 @@ function initLightbox() {
   }
 
   function showPrev() {
-    if (SNAPS_DATA.length <= 1) return;
+    if (sortedSnaps.length <= 1) return;
     currentLightboxIndex =
-      (currentLightboxIndex - 1 + SNAPS_DATA.length) % SNAPS_DATA.length;
+      (currentLightboxIndex - 1 + sortedSnaps.length) % sortedSnaps.length;
     openLightbox(currentLightboxIndex);
   }
 
   function showNext() {
-    if (SNAPS_DATA.length <= 1) return;
-    currentLightboxIndex = (currentLightboxIndex + 1) % SNAPS_DATA.length;
+    if (sortedSnaps.length <= 1) return;
+    currentLightboxIndex = (currentLightboxIndex + 1) % sortedSnaps.length;
     openLightbox(currentLightboxIndex);
   }
 

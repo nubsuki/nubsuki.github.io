@@ -33,6 +33,44 @@
     gap: 10px;
 }
 
+.snaps-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.snaps-sort-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #a0a0a0;
+    padding: 5px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.snaps-sort-btn i {
+    color: #55c4d3;
+    font-size: 0.88rem;
+}
+
+.snaps-sort-btn:hover {
+    color: #fff;
+    border-color: rgba(85, 196, 211, 0.4);
+    background: rgba(85, 196, 211, 0.08);
+    box-shadow: 0 0 10px rgba(85, 196, 211, 0.15);
+}
+
+.snaps-sort-btn:active {
+    transform: scale(0.97);
+}
+
 .snaps-count-badge {
     display: inline-flex;
     align-items: center;
