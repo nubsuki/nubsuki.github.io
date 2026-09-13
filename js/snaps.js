@@ -181,7 +181,7 @@ let currentLightboxIndex = 0;
 let sortOrder = "added";
 let sortedSnaps = [];
 
-// Sort snaps: preserves added order by default, or sorts by date when button clicked
+// Sort snaps
 function getSortedSnaps() {
   if (sortOrder === "added") {
     return [...SNAPS_DATA];
