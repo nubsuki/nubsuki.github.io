@@ -126,13 +126,19 @@
     background: rgba(10, 12, 16, 0.9);
     border-top: 1px solid rgba(255, 255, 255, 0.06);
     display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.snap-meta-top {
+    display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 8px;
 }
 
 .snap-title {
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     color: #e0e0e0;
     white-space: nowrap;
     overflow: hidden;
@@ -145,6 +151,54 @@
     color: #55c4d3;
     font-family: 'Fira Code', monospace;
     flex-shrink: 0;
+}
+
+.snap-meta-chips {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+.snap-meta-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.68rem;
+    color: #8fa0ad;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 2px 7px;
+    border-radius: 4px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.snap-meta-chip i {
+    color: #55c4d3;
+    font-size: 0.7rem;
+}
+
+.snap-meta-chip.snap-chip-link {
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.snap-meta-chip.snap-chip-link:hover {
+    color: #fff;
+    border-color: #55c4d3;
+    background: rgba(85, 196, 211, 0.15);
+    box-shadow: 0 0 10px rgba(85, 196, 211, 0.2);
+}
+
+.snap-meta-chip .chip-ext {
+    font-size: 0.58rem;
+    opacity: 0.65;
+    margin-left: 2px;
 }
 
 /* Empty State */
@@ -243,10 +297,55 @@
     text-overflow: ellipsis;
 }
 
-.lightbox-date {
-    font-size: 0.74rem;
-    color: #55c4d3;
+.lightbox-submeta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.lightbox-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.72rem;
     font-family: 'Fira Code', monospace;
+    color: #a0b0be;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.lightbox-tag i {
+    color: #55c4d3;
+    font-size: 0.75rem;
+}
+
+.lightbox-tag.lightbox-tag-link {
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.lightbox-tag.lightbox-tag-link:hover {
+    color: #fff;
+    border-color: #55c4d3;
+    background: rgba(85, 196, 211, 0.18);
+    box-shadow: 0 0 12px rgba(85, 196, 211, 0.25);
+}
+
+.lightbox-tag .tag-ext-icon {
+    font-size: 0.6rem;
+    opacity: 0.7;
+    margin-left: 2px;
+}
+
+.lightbox-tag#lightbox-date {
+    color: #55c4d3;
+    background: rgba(85, 196, 211, 0.08);
+    border-color: rgba(85, 196, 211, 0.25);
 }
 
 .lightbox-raw-btn {
