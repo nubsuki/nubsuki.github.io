@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
   initProjectEntrance();
-  initProjectFilters();
   initProjectSearch();
   initVideoEmbeds();
 });
@@ -9,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
 function initProjectEntrance() {
   const cards = document.querySelectorAll(".project-card");
 
-  // Determine delay based on whether intro loading overlay is active
   const isIntroActive =
     !sessionStorage.getItem("introShown") &&
     document.getElementById("loading-screen");
@@ -24,48 +22,13 @@ function initProjectEntrance() {
   }, baseDelay);
 }
 
-// Category filtering with smooth stagger
-function initProjectFilters() {
-  const filterBtns = document.querySelectorAll(".filter-btn");
-  const cards = document.querySelectorAll(".project-card");
-  const emptyState = document.getElementById("projects-empty-state");
-
-  filterBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      filterBtns.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      const filter = btn.getAttribute("data-filter");
-      let visibleIndex = 0;
-
-      cards.forEach((card) => {
-        const category = card.getAttribute("data-category");
-        if (filter === "all" || category === filter) {
-          card.style.display = "flex";
-          card.classList.remove("card-visible");
-          setTimeout(() => {
-            card.classList.add("card-visible");
-          }, visibleIndex * 60);
-          visibleIndex++;
-        } else {
-          card.classList.remove("card-visible");
-          card.style.display = "none";
-        }
-      });
-
-      if (emptyState) {
-        emptyState.style.display = visibleIndex === 0 ? "block" : "none";
-      }
-    });
-  });
-}
-
 // Live search filtering
 function initProjectSearch() {
   const searchInput = document.getElementById("projects-search");
   const clearBtn = document.getElementById("projects-search-clear");
   const cards = document.querySelectorAll(".project-card");
   const emptyState = document.getElementById("projects-empty-state");
+  const countNum = document.getElementById("projects-count-num");
 
   if (!searchInput) return;
 
@@ -88,6 +51,10 @@ function initProjectSearch() {
       }
     });
 
+    if (countNum) {
+      countNum.textContent = visibleCount;
+    }
+
     if (emptyState) {
       emptyState.style.display = visibleCount === 0 ? "block" : "none";
     }
@@ -102,6 +69,9 @@ function initProjectSearch() {
         card.classList.remove("card-visible");
         setTimeout(() => card.classList.add("card-visible"), index * 50);
       });
+      if (countNum) {
+        countNum.textContent = cards.length;
+      }
       if (emptyState) emptyState.style.display = "none";
       searchInput.focus();
     });

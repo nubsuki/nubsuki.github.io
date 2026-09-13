@@ -32,7 +32,7 @@
     margin: 0;
 }
 
-/* Filter toolbar */
+/* Toolbar */
 .projects-toolbar {
     display: flex;
     flex-wrap: wrap;
@@ -43,6 +43,30 @@
     margin-bottom: 16px;
     padding-top: 14px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.projects-count-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #a0a0a0;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+}
+
+.projects-count-badge i {
+    color: #55c4d3;
+    font-size: 0.9rem;
+}
+
+.projects-count-badge span {
+    color: #fff;
+    font-weight: 600;
 }
 
 .projects-filters {
@@ -175,7 +199,7 @@
     transform: translateY(0);
 }
 
-/* Project metadata list for G2G and detailed cards */
+/* Project metadata */
 .project-meta-list {
     display: flex;
     flex-direction: column;
@@ -378,6 +402,166 @@
 
 .project-image-preview:hover {
     transform: scale(1.01);
+}
+
+/* Image links & zoom hover */
+.project-image-link {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    cursor: zoom-in;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-image-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(85, 196, 211, 0);
+    transition: background 0.2s ease;
+    pointer-events: none;
+}
+
+.project-image-link:hover::after {
+    background: rgba(85, 196, 211, 0.04);
+}
+
+/* Media grid */
+.project-media-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+@media (max-width: 720px) {
+    .project-media-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.project-media-grid .project-image-wrapper {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-media-grid .project-image-preview {
+    max-height: 280px;
+}
+
+/* Image Captions */
+.project-image-caption {
+    padding: 8px 12px;
+    font-size: 0.74rem;
+    font-family: 'Fira Code', monospace;
+    color: #a8a8a8;
+    background: rgba(10, 12, 16, 0.85);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.4;
+}
+
+.project-image-caption i {
+    color: #55c4d3;
+    font-size: 0.82rem;
+    flex-shrink: 0;
+}
+
+/* Compact preview */
+.project-image-wrapper.compact-image-wrapper {
+    max-width: 330px;
+    background: rgba(10, 12, 16, 0.75);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.project-image-preview.compact-preview {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+}
+
+.project-image-wrapper.compact-image-wrapper .project-image-caption {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 4px;
+    border-top: none;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Header badges */
+.project-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.project-badge-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 9px;
+    font-size: 0.72rem;
+    font-family: 'Fira Code', monospace;
+    font-weight: 500;
+    border-radius: 4px;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #bbb;
+    transition: all 0.2s ease;
+}
+
+.project-badge-action:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+}
+
+.project-badge-action.steam-badge {
+    border-color: rgba(85, 196, 211, 0.35);
+    color: #55c4d3;
+}
+
+.project-badge-action.steam-badge:hover {
+    background: rgba(85, 196, 211, 0.15);
+    border-color: #55c4d3;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(85, 196, 211, 0.2);
+}
+
+.project-version-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-family: 'Fira Code', monospace;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: rgba(85, 196, 211, 0.12);
+    color: #55c4d3;
+    border: 1px solid rgba(85, 196, 211, 0.3);
+    vertical-align: middle;
+    margin-left: 6px;
+    font-weight: 600;
+}
+
+/* Code tags */
+.project-card-desc code {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.76rem;
+    padding: 1px 5px;
+    background: rgba(85, 196, 211, 0.1);
+    color: #55c4d3;
+    border: 1px solid rgba(85, 196, 211, 0.25);
+    border-radius: 4px;
 }
 
 /* Empty search state */
