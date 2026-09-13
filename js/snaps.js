@@ -3,7 +3,6 @@
 // - title: string
 // - date: string (e.g. "AUG 24, 2026")
 // - url: string
-// - caption: string
 // - capturedBy: string
 // - capturedByUrl: string
 // - location: string
@@ -14,12 +13,45 @@ const SNAPS_DATA = [
     date: "AUG 24, 2026",
     capturedBy: "nubsuki",
     capturedByUrl: "https://www.instagram.com/nubsuki",
-    url: "https://raw.githubusercontent.com/nubsuki/nubsuki_website/main/snaps/IMG_20260824_220103.jpg",
-    caption: "Slice of melon with Miyabi.",
+    url: "https://drive.google.com/file/d/1oTgqhf1TcU9aN2tgPq2p7xTAMBkMLGko/view?usp=drive_link",
+  },
+  {
+    title: "Rainy day",
+    date: "JUN 23, 2024",
+    capturedBy: "nubsuki",
+    capturedByUrl: "https://www.instagram.com/nubsuki",
+    url: "https://drive.google.com/file/d/1O5Yx-W9Cbu2VzZQAF7kbzmQA6_GODHGo/view?usp=drive_link",
+  },
+  {
+    title: "Cat",
+    date: "SEP 01, 2026",
+    capturedBy: "Shou",
+    capturedByUrl: "https://www.instagram.com/shou_chan002",
+    url: "https://drive.google.com/file/d/13epl0xTIfD4h2Sb7Y9IIGraJb9ohplmG/view?usp=drive_link",
   },
 ];
 
 let currentLightboxIndex = 0;
+
+// Auto-convert Google Drive links to direct high-speed image stream
+function resolveSnapUrl(url) {
+  if (!url) return "";
+  const driveFileMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+  const driveIdMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  const fileId = driveFileMatch
+    ? driveFileMatch[1]
+    : driveIdMatch
+      ? driveIdMatch[1]
+      : null;
+
+  if (
+    fileId &&
+    (url.includes("drive.google.com") || url.includes("docs.google.com"))
+  ) {
+    return `https://lh3.googleusercontent.com/d/${fileId}`;
+  }
+  return url;
+}
 
 // Resolve Google Maps link from custom mapUrl or place name
 function getMapUrl(snap) {
@@ -109,12 +141,13 @@ function renderSnaps() {
     const location = snap.location || snap.loc;
     const author = getCapturedByInfo(snap);
     const mapUrl = getMapUrl(snap);
+    const imgUrl = resolveSnapUrl(snap.url);
     const hasChips = Boolean(location || author);
 
     return `
     <article class="snap-card" data-index="${index}" tabindex="0" role="button" aria-label="View photo: ${snap.title}">
       <div class="snap-img-wrap">
-        <img src="${snap.url}" alt="${snap.title}" loading="lazy" class="snap-img" />
+        <img src="${imgUrl}" alt="${snap.title}" loading="lazy" class="snap-img" />
       </div>
       <div class="snap-meta-bar">
         <div class="snap-meta-top">
@@ -174,7 +207,9 @@ function initLightbox() {
   const prevBtn = document.getElementById("lightbox-prev");
   const nextBtn = document.getElementById("lightbox-next");
   const img = document.getElementById("lightbox-img");
-  const caption = document.getElementById("lightbox-caption");
+  const titleEl =
+    document.getElementById("lightbox-title") ||
+    document.getElementById("lightbox-caption");
   const date = document.getElementById("lightbox-date");
   const locationEl = document.getElementById("lightbox-location");
   const capturedEl = document.getElementById("lightbox-captured");
@@ -190,10 +225,11 @@ function initLightbox() {
     const location = snap.location || snap.loc;
     const author = getCapturedByInfo(snap);
     const mapUrl = getMapUrl(snap);
+    const imgUrl = resolveSnapUrl(snap.url);
 
-    img.src = snap.url;
+    img.src = imgUrl;
     img.alt = snap.title;
-    caption.textContent = snap.caption || snap.title;
+    if (titleEl) titleEl.textContent = snap.title;
 
     if (date) {
       date.innerHTML = `<i class="bi bi-calendar3"></i> ${snap.date}`;
