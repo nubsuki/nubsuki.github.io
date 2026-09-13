@@ -61,17 +61,35 @@ const SNAPS_DATA = [
   },
   {
     title: "Dusk",
-    date: "SEP 05, 2025",
+    date: "SEP 07, 2026",
     capturedBy: "Shou",
     capturedByUrl: "https://www.instagram.com/shou_chan002",
     url: "https://drive.google.com/file/d/1vNbVn6fypEv2Q2pP1xBnfAztzyDTCIb4/view?usp=drive_link",
   },
   {
     title: "",
-    date: "SEP 05, 2025",
+    date: "MAY 12, 2026",
     capturedBy: "Shou",
     capturedByUrl: "https://www.instagram.com/shou_chan002",
     url: "https://drive.google.com/file/d/16Y_FjcPZepwWPxpIRZ7U5IJo-4cAr0zi/view?usp=drive_link",
+    location: "Madiwela Jogging Track",
+    mapUrl: "https://maps.app.goo.gl/7kpAr1ATmf6vdWrYA",
+  },
+  {
+    title: "",
+    date: "NOV 19, 2025",
+    capturedBy: "nubsuki",
+    capturedByUrl: "https://www.instagram.com/nubsuki",
+    url: "https://drive.google.com/file/d/1XgZrtmzts2wOQ7Q4fc8N3pn2-DgWgrz8/view?usp=drive_link",
+    location: "Marine Drive",
+    mapUrl: "https://maps.app.goo.gl/4rd8WWtCgfFFwDDEA",
+  },
+  {
+    title: "",
+    date: "MAY 17, 2026",
+    capturedBy: "nubsuki",
+    capturedByUrl: "https://www.instagram.com/nubsuki",
+    url: "https://drive.google.com/file/d/1P5cIk2kDMKaTvbnw0c1l8NEf1QyoP8Fk/view?usp=drive_link",
   },
 ];
 
