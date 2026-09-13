@@ -23,7 +23,7 @@ const SNAPS_DATA = [
     url: "https://drive.google.com/file/d/1O5Yx-W9Cbu2VzZQAF7kbzmQA6_GODHGo/view?usp=drive_link",
   },
   {
-    title: "Cat",
+    title: "Bro let me be....",
     date: "SEP 01, 2026",
     capturedBy: "Shou",
     capturedByUrl: "https://www.instagram.com/shou_chan002",
