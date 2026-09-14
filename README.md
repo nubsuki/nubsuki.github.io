@@ -23,7 +23,7 @@
 - **Live Discord Presence**
 - **Snaps (Photography Log)**
 - **Open Benchmark Datasets**
-- **Minimal & Modern Cyber Design**
+- **Minimal & Modern Design**
 
 ---
 
